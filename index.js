@@ -18,24 +18,24 @@
 //     db.set(String(project.id), newProject)
 // })
 // asdwasdwafewgh0001234edhgahfffjjeegfvfffsdfgkrolfgdhashaa
-return
+// return
 
-function RandomInteger(a, b) {
-    if (a > b) { var c = a; a = b; b = c; }
-    return Math.floor(Math.random() * (b - a + 1) + a);
-}
+// function RandomInteger(a, b) {
+//     if (a > b) { var c = a; a = b; b = c; }
+//     return Math.floor(Math.random() * (b - a + 1) + a);
+// }
 
 const ApproverUsernames = [
-  "JeremyGamer13",
-  "JGamerTesting",
-  "jwklongYT",
-  "RedMan13",
-  "know0your0true0color",
-  "hacker_anonimo",
-  "ianyourgod",
-  "yeeter2001"
-  // add your scratch username here and you
-  // will be able to approve uploaded projects
+    "JeremyGamer13",
+    "JGamerTesting",
+    "jwklongYT",
+    "RedMan13",
+    "know0your0true0color",
+    "hacker_anonimo",
+    "ianyourgod",
+    "yeeter2001"
+    // add your scratch username here and you
+    // will be able to approve uploaded projects
 ]
 
 const DEBUG_logAllFailedData = false
@@ -75,8 +75,8 @@ function SafeJSONParse(json) {
 }
 
 app.use(cors({
-  origin: '*',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }));
 app.use(bodyParser.urlencoded({
     limit: process.env.ServerSize,
@@ -84,52 +84,52 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json({ limit: process.env.ServerSize }));
 // cool display page
-app.get('/', async function(req, res) {
+app.get('/', async function (req, res) {
     res.redirect('https://penguinmod.site/')
 })
-app.get('/icon.png', async function(req, res) {
+app.get('/icon.png', async function (req, res) {
     res.status(200)
     res.header("Content-Type", 'image/png');
     res.sendFile(path.join(__dirname, "icon.png"))
 })
-app.get('/projects', async function(req, res) {
+app.get('/projects', async function (req, res) {
     res.redirect('https://penguinmod.site/search?q=all%3Aprojects')
 })
 // upload project thing
-app.get('/upload', async function(req, res) {
+app.get('/upload', async function (req, res) {
     res.redirect('https://penguinmod.site/upload')
 })
-app.get('/projects/upload', async function(req, res) {
+app.get('/projects/upload', async function (req, res) {
     res.redirect('https://penguinmod.site/upload')
 })
 // project admin menu
-app.get('/approve', async function(req, res) {
+app.get('/approve', async function (req, res) {
     res.redirect('https://penguinmod.site/panel')
 })
-app.get('/panel', async function(req, res) {
+app.get('/panel', async function (req, res) {
     res.redirect('https://penguinmod.site/panel')
 })
-app.get('/projects/approve', async function(req, res) {
+app.get('/projects/approve', async function (req, res) {
     res.redirect('https://penguinmod.site/panel')
 })
-app.get('/projects/panel', async function(req, res) {
+app.get('/projects/panel', async function (req, res) {
     res.redirect('https://penguinmod.site/panel')
 })
 // my projects menu
-app.get('/projects/stuff', async function(req, res) {
+app.get('/projects/stuff', async function (req, res) {
     res.redirect('https://penguinmod.site/mystuff')
 })
-app.get('/projects/mystuff', async function(req, res) {
+app.get('/projects/mystuff', async function (req, res) {
     res.redirect('https://penguinmod.site/mystuff')
 })
-app.get('/stuff', async function(req, res) {
+app.get('/stuff', async function (req, res) {
     res.redirect('https://penguinmod.site/mystuff')
 })
-app.get('/mystuff', async function(req, res) {
+app.get('/mystuff', async function (req, res) {
     res.redirect('https://penguinmod.site/mystuff')
 })
 // nothing lol
-app.get('/api', async function(req, res) {
+app.get('/api', async function (req, res) {
     res.status(200)
     res.header("Content-Type", 'application/json');
     res.json({
@@ -142,7 +142,7 @@ app.get('/api', async function(req, res) {
     })
 })
 // extra stuff
-app.get('/api/projects/guidelines', async function(req, res) {
+app.get('/api/projects/guidelines', async function (req, res) {
     res.status(200)
     res.header("Content-Type", 'application/json');
     res.json({
@@ -157,29 +157,29 @@ app.get('/api/projects/guidelines', async function(req, res) {
     })
 })
 // security stuff i guess
-app.get('/api/users/isBanned', async function(req, res) {
-    if (typeof req.query.username != "string") { 
+app.get('/api/users/isBanned', async function (req, res) {
+    if (typeof req.query.username != "string") {
         res.status(400)
         res.header("Content-Type", 'application/json');
-        res.json({"error": "InvalidRequest"})
+        res.json({ "error": "InvalidRequest" })
         return
     }
     res.status(200)
     res.header("Content-Type", 'application/json');
-    res.json({"banned": UserManager.isBanned(req.query.username)})
+    res.json({ "banned": UserManager.isBanned(req.query.username) })
 })
 // get the entire project published file (basically just means you get all of the projects ever published)
 // app.get('/api/projects/getAll', async function(req, res) {
 //     res.header("Content-Type", 'application/json');
 //     res.sendFile(path.join(__dirname, 'projects/published.json'));
 // })
-app.get('/api/projects/getAll', async function(req, res) {
-        res.status(400)
-        res.header("Content-Type", 'application/json');
-        res.json({"error": "This endpoint is deprecated, use /api/projects/getApproved or /api/projects/getUnapproved"})
+app.get('/api/projects/getAll', async function (req, res) {
+    res.status(400)
+    res.header("Content-Type", 'application/json');
+    res.json({ "error": "This endpoint is deprecated, use /api/projects/getApproved or /api/projects/getUnapproved" })
 })
 // get approved projects
-app.get('/api/projects/getApproved', async function(req, res) {
+app.get('/api/projects/getApproved', async function (req, res) {
     const db = new Database(`${__dirname}/projects/published.json`)
     // this is explained in paged api but basically just add normal projects to featured projects
     // because otherwise featured projects would come after normal projects
@@ -198,28 +198,28 @@ app.get('/api/projects/getApproved', async function(req, res) {
     res.json(returnArray);
 })
 // get approved projects but only a certain amount
-app.get('/api/projects/max', async function(req, res) {
+app.get('/api/projects/max', async function (req, res) {
     function grabArray() {
-      const db = new Database(`${__dirname}/projects/published.json`)
-      // this is explained in paged api but basically just add normal projects to featured projects
-      // because otherwise featured projects would come after normal projects
-      const featuredProjects = []
-      const projects = db.all().map(value => { return value.data }).sort((project, sproject) => {
-          return sproject.date - project.date
-      }).filter(proj => proj.accepted == true).filter(project => {
-          if (project.featured) {
-              featuredProjects.push(project)
-          }
-          return project.featured != true
-      })
-      if (String(req.query.featured) == "true") {
-        return featuredProjects
-      }
-      if (String(req.query.hidefeatured) == "true") {
-        return projects
-      }
-      const returnArray = featuredProjects.concat(projects)
-      return returnArray
+        const db = new Database(`${__dirname}/projects/published.json`)
+        // this is explained in paged api but basically just add normal projects to featured projects
+        // because otherwise featured projects would come after normal projects
+        const featuredProjects = []
+        const projects = db.all().map(value => { return value.data }).sort((project, sproject) => {
+            return sproject.date - project.date
+        }).filter(proj => proj.accepted == true).filter(project => {
+            if (project.featured) {
+                featuredProjects.push(project)
+            }
+            return project.featured != true
+        })
+        if (String(req.query.featured) == "true") {
+            return featuredProjects
+        }
+        if (String(req.query.hidefeatured) == "true") {
+            return projects
+        }
+        const returnArray = featuredProjects.concat(projects)
+        return returnArray
     }
     let count = Number(req.query.amount)
     if (isNaN(count)) count = 0
@@ -232,7 +232,7 @@ app.get('/api/projects/max', async function(req, res) {
     res.json(arr);
 })
 // get unapproved projects
-app.get('/api/projects/getUnapproved', async function(req, res) {
+app.get('/api/projects/getUnapproved', async function (req, res) {
     // 6/3/2023 unapproved projects are admin only
     const packet = req.query
     if (!UserManager.isCorrectCode(packet.user, packet.passcode)) {
@@ -257,7 +257,7 @@ app.get('/api/projects/getUnapproved', async function(req, res) {
     res.json(returnArray);
 })
 // pm wrappers so that pm code doesnt need to be changed in a major way
-app.get('/api/pmWrapper/projects', async function(req, res) {
+app.get('/api/pmWrapper/projects', async function (req, res) {
     const db = new Database(`${__dirname}/projects/published.json`)
     // this is explained in paged api but basically just add normal projects to featured projects
     // because otherwise featured projects would come after normal projects
@@ -277,11 +277,11 @@ app.get('/api/pmWrapper/projects', async function(req, res) {
     res.status(200)
     res.json(returnArray);
 })
-app.get('/api/pmWrapper/remixes', async function(req, res) {
+app.get('/api/pmWrapper/remixes', async function (req, res) {
     const packet = req.query
     if (!packet.id) {
         res.status(400)
-        res.json({"error": "IdNotSpecified"})
+        res.json({ "error": "IdNotSpecified" })
         return
     }
     const db = new Database(`${__dirname}/projects/published.json`)
@@ -293,23 +293,23 @@ app.get('/api/pmWrapper/remixes', async function(req, res) {
     res.status(200)
     res.json(json);
 })
-app.get('/api/pmWrapper/iconUrl', async function(req, res) {
+app.get('/api/pmWrapper/iconUrl', async function (req, res) {
     if (!req.query.id) {
         res.status(400)
-        res.json({"error":"IdNotSpecified"})
+        res.json({ "error": "IdNotSpecified" })
         return
     }
     const db = new Database(`${__dirname}/projects/published.json`)
     const json = db.get(String(req.query.id))
     if (!json) {
         res.status(400)
-        res.json({"error":"IdNotValid"})
+        res.json({ "error": "IdNotValid" })
         return
     }
     fs.readFile(`./projects/uploadedImages/p${json.id}.uri`, "utf-8", (err, uri) => {
         if (err) {
             res.status(404)
-            res.json({"error":"ImageNotFound"})
+            res.json({ "error": "ImageNotFound" })
             return
         }
         res.status(200)
@@ -318,17 +318,17 @@ app.get('/api/pmWrapper/iconUrl', async function(req, res) {
         res.send(imageBuffer)
     })
 })
-app.get('/api/pmWrapper/getProject', async function(req, res) {
+app.get('/api/pmWrapper/getProject', async function (req, res) {
     if (!req.query.id) {
         res.status(400)
-        res.json({"error":"IdNotSpecified"})
+        res.json({ "error": "IdNotSpecified" })
         return
     }
     const db = new Database(`${__dirname}/projects/published.json`)
     const json = db.get(String(req.query.id))
     if (!json) {
         res.status(400)
-        res.json({"error":"IdNotValid"})
+        res.json({ "error": "IdNotValid" })
         return
     }
     res.status(200)
@@ -336,10 +336,10 @@ app.get('/api/pmWrapper/getProject', async function(req, res) {
 })
 const CachedScratchUsers = {}
 let ScratchRequestQueue = 0
-app.get('/api/pmWrapper/scratchUserImage', async function(req, res) {
+app.get('/api/pmWrapper/scratchUserImage', async function (req, res) {
     if (!req.query.username) {
         res.status(400)
-        res.json({"error":"UsernameNotSpecified"})
+        res.json({ "error": "UsernameNotSpecified" })
         return
     }
     if (CachedScratchUsers[req.query.username] != null) {
@@ -373,14 +373,14 @@ app.get('/api/pmWrapper/scratchUserImage', async function(req, res) {
                 const json = JSON.parse(text)
                 if (!json.profile) {
                     res.status(400)
-                    res.json({"error":`UserDoesNotExist`, "data": json})
+                    res.json({ "error": `UserDoesNotExist`, "data": json })
                     return
                 }
                 const images = json.profile.images
-                console.log("caching profile image of",req.query.username)
+                console.log("caching profile image of", req.query.username)
                 const imageUrl = images[Object.getOwnPropertyNames(images)[0]]
                 function errorFunction(err) {
-                    errorFindCached({"error":`RequestNearlyFinishedBeforeExceptionOccurred:${err}`, "data":{imageUrl:imageUrl}})
+                    errorFindCached({ "error": `RequestNearlyFinishedBeforeExceptionOccurred:${err}`, "data": { imageUrl: imageUrl } })
                 }
                 fetch(`https://api.allorigins.win/raw?url=${imageUrl}`).then(response => {
                     response.blob().then(blob => {
@@ -402,36 +402,36 @@ app.get('/api/pmWrapper/scratchUserImage', async function(req, res) {
                     }).catch(errorFunction)
                 }).catch(errorFunction)
             }).catch(async err => {
-                errorFindCached({"error":`JSONFromExternalSiteExperiencedErrorWhileReading`, "jsonerror": String(err), "returned": textret})
+                errorFindCached({ "error": `JSONFromExternalSiteExperiencedErrorWhileReading`, "jsonerror": String(err), "returned": textret })
                 return
             })
         }).catch(err => {
-            errorFindCached({"error":`ErrorFromExternalSite:${err}`})
+            errorFindCached({ "error": `ErrorFromExternalSite:${err}` })
             return
         })
     }, ScratchRequestQueue)
 })
 // scratch auth implementation
-app.get('/api/users/login', async function(req, res) {
+app.get('/api/users/login', async function (req, res) {
     const privateCode = req.query.privateCode
     UserManager.verifyCode(privateCode).then(response => {
         if (!response.valid) {
             res.status(400)
             res.header("Content-Type", 'application/json');
-            res.json({"error": "InvalidLogin"})
+            res.json({ "error": "InvalidLogin" })
             return
         }
         UserManager.setCode(response.username, privateCode)
         res.header("Content-Type", 'application/json');
         res.status(200)
-        res.json({"success": "Login set, please save your private code as it is your PenguinMod password now."})
+        res.json({ "success": "Login set, please save your private code as it is your PenguinMod password now." })
     }).catch(err => {
         res.status(400)
         res.header("Content-Type", 'application/json');
-        res.json({"error": "InvalidLogin"})
+        res.json({ "error": "InvalidLogin" })
     })
 })
-app.get('/api/users/usernameFromCode', async function(req, res) {
+app.get('/api/users/usernameFromCode', async function (req, res) {
     const privateCode = req.query.privateCode
     const username = UserManager.usernameFromCode(privateCode)
     if (username == null) {
@@ -445,12 +445,12 @@ app.get('/api/users/usernameFromCode', async function(req, res) {
     res.json({ "username": username })
 })
 // extra stuff
-app.get('/api/users/isAdmin', async function(req, res) {
+app.get('/api/users/isAdmin', async function (req, res) {
     res.status(200)
     res.header("Content-Type", 'application/json');
     res.json({ "admin": ApproverUsernames.includes(req.query.username) })
 })
-app.get('/api/users/getMyProjects', async function(req, res) {
+app.get('/api/users/getMyProjects', async function (req, res) {
     if (!UserManager.isCorrectCode(req.query.user, req.query.code)) {
         res.status(400)
         res.header("Content-Type", 'application/json');
@@ -459,7 +459,7 @@ app.get('/api/users/getMyProjects', async function(req, res) {
     }
     const db = new Database(`${__dirname}/projects/published.json`)
     const projects = db.all().map(data => data.data).filter(project => project.owner === req.query.user)
-    
+
     let result = projects
 
     if (String(req.query.sorted) === "true") {
@@ -487,13 +487,13 @@ app.get('/api/users/getMyProjects', async function(req, res) {
         const returnArray = featuredProjects.concat(result, waitingProjects, hiddenProjects)
         result = returnArray
     }
-    
+
     res.status(200)
     res.header("Content-Type", 'application/json');
     res.json(result)
 })
 // store temporary data
-app.post('/api/users/store', async function(req, res) {
+app.post('/api/users/store', async function (req, res) {
     const packet = req.body
     if (!UserManager.isCorrectCode(packet.container, packet.token)) {
         res.status(400)
@@ -520,7 +520,7 @@ app.post('/api/users/store', async function(req, res) {
         res.json({ "success": true })
     }
 })
-app.get('/api/users/getstore', async function(req, res) {
+app.get('/api/users/getstore', async function (req, res) {
     const packet = req.query
     if (!UserManager.isCorrectCode(packet.container, packet.token)) {
         res.status(400)
@@ -533,7 +533,7 @@ app.get('/api/users/getstore', async function(req, res) {
     res.json(StorageSpace.getContainer(packet.container))
 })
 // approve uploaded projects
-app.get('/api/projects/approve', async function(req, res) {
+app.get('/api/projects/approve', async function (req, res) {
     const packet = req.query
     if (!UserManager.isCorrectCode(packet.approver, packet.passcode)) {
         res.status(400)
@@ -558,7 +558,7 @@ app.get('/api/projects/approve', async function(req, res) {
     // replace
     let isUpdated = false
     let isRemix = false
-    
+
     let idToSetTo = packet.id
     // idk if db uses a reference to the object or not
     const project = JSON.parse(JSON.stringify(db.get(packet.id)))
@@ -617,7 +617,7 @@ app.get('/api/projects/approve', async function(req, res) {
         const backupFolder = `./projects/backup/Backup${idToSetTo}`
         try {
             fs.mkdirSync(backupFolder)
-        } catch {}
+        } catch { }
         const dbEntry = db.get(String(idToSetTo))
         fs.writeFile(`${backupFolder}/entry.json`, JSON.stringify(dbEntry), err => { if (err) console.log("failed to create backup of db entry;", err) })
         const fileData = fs.readFileSync(`./projects/uploaded/p${idToSetTo}.txt`, "utf-8")
@@ -653,10 +653,10 @@ app.get('/api/projects/approve', async function(req, res) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(JSON.parse(body))
     })
-        // .then(res => res.text().then(t => console.log("WebhookResponse",res.status,t))).catch(err => console.log("FailedWebhookSend", err))
+    // .then(res => res.text().then(t => console.log("WebhookResponse",res.status,t))).catch(err => console.log("FailedWebhookSend", err))
 })
 // feature uploaded projects
-app.get('/api/projects/feature', async function(req, res) {
+app.get('/api/projects/feature', async function (req, res) {
     const packet = req.query
     if (!UserManager.isCorrectCode(packet.approver, packet.passcode)) {
         res.status(400)
@@ -719,10 +719,10 @@ app.get('/api/projects/feature', async function(req, res) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(JSON.parse(body))
     })
-        // .then(res => res.text().then(t => console.log("WebhookResponse",res.status,t))).catch(err => console.log("FailedWebhookSend", err))
+    // .then(res => res.text().then(t => console.log("WebhookResponse",res.status,t))).catch(err => console.log("FailedWebhookSend", err))
 })
 // toggle liking or voting for uploaded projects
-app.post('/api/projects/toggleProjectVote', async function(req, res) {
+app.post('/api/projects/toggleProjectVote', async function (req, res) {
     const packet = req.body
     const username = String(packet.user)
     if (!UserManager.isCorrectCode(username, packet.passcode)) {
@@ -795,7 +795,7 @@ app.post('/api/projects/toggleProjectVote', async function(req, res) {
     res.header("Content-Type", 'application/json');
     res.json({ "state": voted })
 })
-app.get('/api/projects/getProjectVote', async function(req, res) {
+app.get('/api/projects/getProjectVote', async function (req, res) {
     const packet = req.query
     const username = String(packet.user)
     if (!UserManager.isCorrectCode(username, packet.passcode)) {
@@ -828,7 +828,7 @@ app.get('/api/projects/getProjectVote', async function(req, res) {
     res.json({ "loved": loved, "voted": voted })
 })
 // delete uploaded projects
-app.get('/api/projects/delete', async function(req, res) {
+app.get('/api/projects/delete', async function (req, res) {
     const packet = req.query
     if (!UserManager.isCorrectCode(packet.approver, packet.passcode)) {
         res.status(400)
@@ -854,10 +854,10 @@ app.get('/api/projects/delete', async function(req, res) {
     }
     db.delete(String(packet.id))
     fs.unlink(`./projects/uploaded/p${packet.id}.txt`, err => {
-        if (err) console.log("failed to delete project data for",packet.id,";",err)
+        if (err) console.log("failed to delete project data for", packet.id, ";", err)
     })
     fs.unlink(`./projects/uploadedImages/p${packet.id}.uri`, err => {
-        if (err) console.log("failed to delete project image for",packet.id,";",err)
+        if (err) console.log("failed to delete project image for", packet.id, ";", err)
     })
     console.log(packet.approver, "deleted", packet.id)
     res.status(200)
@@ -865,7 +865,7 @@ app.get('/api/projects/delete', async function(req, res) {
     res.json({ "success": true })
 })
 // update uploaded projects
-app.post('/api/projects/update', async function(req, res) {
+app.post('/api/projects/update', async function (req, res) {
     const packet = req.body
     if (!UserManager.isCorrectCode(packet.requestor, packet.passcode)) {
         res.status(400)
@@ -926,7 +926,7 @@ app.post('/api/projects/update', async function(req, res) {
             }
             updatingProject = true
         }
-      // if yea then do
+        // if yea then do
         if (updatingProject) {
             project.accepted = false
             project.featured = false
@@ -962,18 +962,18 @@ app.post('/api/projects/update', async function(req, res) {
 })
 // upload project to the main page
 const UploadsDisabled = false
-app.post('/api/projects/publish', async function(req, res) {
+app.post('/api/projects/publish', async function (req, res) {
     if (UploadsDisabled) {
         res.status(400)
         res.header("Content-Type", 'application/json');
-        res.json({"error": "PublishDisabled"})
+        res.json({ "error": "PublishDisabled" })
         return;
     }
     const packet = req.body
     if (UserManager.isBanned(packet.author)) {
         res.status(403)
         res.header("Content-Type", 'application/json');
-        res.json({"error": "FeatureDisabledForThisAccount"})
+        res.json({ "error": "FeatureDisabledForThisAccount" })
         return;
     }
 
@@ -994,7 +994,7 @@ app.post('/api/projects/publish', async function(req, res) {
         res.json({ "error": "TooManyRequests" })
         return
     }
-    
+
     if (!(packet.title && packet.author)) {
         res.status(400)
         res.header("Content-Type", 'application/json');
@@ -1069,7 +1069,7 @@ app.post('/api/projects/publish', async function(req, res) {
         if (DEBUG_logAllFailedData) console.log("Notes4096Longer", packet)
         return
     }
-    
+
     // set cooldown
     db.set(packet.author, Date.now() + 480000)
 
@@ -1080,7 +1080,7 @@ app.post('/api/projects/publish', async function(req, res) {
         while (db.has(String(_id))) _id++
     }
     const id = _id
-    
+
     const project = packet.project
     fs.writeFile(`./projects/uploaded/p${id}.txt`, project, "utf8", (err) => {
         if (err) console.error(err)
@@ -1099,15 +1099,15 @@ app.post('/api/projects/publish', async function(req, res) {
         // project: packet.project, // base64 url (not saved here since we save it in a file instead)
         featured: false, // if true, display it golden in pm or something idk
         accepted: false, // must be accepted before it can appear on the public page
-        
+
         remix: packet.remix,
 
         date: Date.now(), // set the creation date to now
-        
+
         views: 0, // how many times the project file was grabbed in the api
         loves: [], // list of (encrypted) usernames who loved the project
         votes: [], // list of (encrypted) usernames who voted for the project to be featured
-        
+
         rating: packet.rating, // E, E+10, T ratings (or ? for old projects)
     })
     res.status(200)
@@ -1115,7 +1115,7 @@ app.post('/api/projects/publish', async function(req, res) {
     console.log(packet.title, "was published!")
 })
 // gets a published project
-app.get('/api/projects/getPublished', async function(req, res) {
+app.get('/api/projects/getPublished', async function (req, res) {
     if ((req.query.id) == null) {
         res.status(400)
         res.header("Content-Type", 'application/json');
@@ -1165,7 +1165,7 @@ app.get('/api/projects/getPublished', async function(req, res) {
         }
         res.status(200)
         res.json(project)
-    
+
     } else {
         res.status(404)
         res.json({ "error": "NotFound" })
@@ -1201,7 +1201,7 @@ app.get('/api/projects/getPublished', async function(req, res) {
 //     }
 // })
 // sorts the projects into a nice array of pages
-app.get('/api/projects/paged', async function(req, res) {
+app.get('/api/projects/paged', async function (req, res) {
     db = new Database(`${__dirname}` + "/projects/published.json");
     res.header("Content-Type", 'application/json');
     res.status(200)
@@ -1233,7 +1233,7 @@ app.get('/api/projects/paged', async function(req, res) {
     // we set the array to featuredProjectsArray.concat(array) instead of array.concat(featuredProjectsArray)
     // because otherwise the featured projects would be after the normal projects
     array = featuredProjectsArray.concat(array)
-    
+
     const maxItems = req.query.length ? Number(req.query.length) : 12
     if (maxItems <= 0) return res.json([])
 
