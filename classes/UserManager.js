@@ -1,5 +1,4 @@
 const Database = require("easy-json-database")
-const fetch = require("node-fetch")
 
 const { encrypt, decrypt } = require("../utilities/encrypt.js")
 const { ParseJSON } = require("../utilities/safejsonparse.js")
