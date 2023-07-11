@@ -7,7 +7,7 @@ const port = 8080;
 
 app.use(cors({
     origin: '*',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on my co
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) die on 204
 }));
 app.use(bodyParser.urlencoded({
     limit: "1kb",
