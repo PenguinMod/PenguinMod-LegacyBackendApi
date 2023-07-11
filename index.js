@@ -57,6 +57,8 @@ const UserStorage = require("./classes/UserStorage.js")
 const StorageSpace = new UserStorage(32000000, 3) // 32 mb per data piece, 3 keys per container
 UserManager.load() // should prevent logouts
 
+const PROJECT_API_URL = "http://164.152.109.189:8080/";
+
 function DecryptArray(array) {
     const na = []
     array.forEach(value => {
@@ -632,7 +634,7 @@ app.get('/api/projects/approve', async function (req, res) {
     res.header("Content-Type", 'application/json');
     res.json({ "success": true })
     if (String(req.query.webhook) === "false") return
-    const projectImage = String(`https://projects.penguinmod.site/api/pmWrapper/iconUrl?id=${project.id}&rn=${Math.round(Math.random() * 9999999)}`)
+    const projectImage = String(`${PROJECT_API_URL}api/pmWrapper/iconUrl?id=${project.id}&rn=${Math.round(Math.random() * 9999999)}`)
     const body = JSON.stringify({
         content: `A project was ${isUpdated ? "updated" : (isRemix ? "remixed" : "approved")}!`,
         embeds: [{
@@ -643,7 +645,7 @@ app.get('/api/projects/approve', async function (req, res) {
             url: String("https://studio.penguinmod.site/#" + String(project.id)),
             author: {
                 name: String(project.owner).substring(0, 50),
-                icon_url: String("https://projects.penguinmod.site/api/pmWrapper/scratchUserImage?username=" + String(project.owner).substring(0, 50)),
+                icon_url: String(`${PROJECT_API_URL}api/pmWrapper/scratchUserImage?username=` + String(project.owner).substring(0, 50)),
                 url: String("https://penguinmod.site/profile?user=" + String(project.owner).substring(0, 50))
             }
         }]
@@ -698,7 +700,7 @@ app.get('/api/projects/feature', async function (req, res) {
     res.header("Content-Type", 'application/json');
     res.json({ "success": true })
     if (String(req.query.webhook) === "false") return
-    const projectImage = String(`https://projects.penguinmod.site/api/pmWrapper/iconUrl?id=${project.id}&rn=${Math.round(Math.random() * 9999999)}`)
+    const projectImage = String(`${PROJECT_API_URL}api/pmWrapper/iconUrl?id=${project.id}&rn=${Math.round(Math.random() * 9999999)}`)
     const projectTitle = String(project.name).substring(0, 250)
     const body = JSON.stringify({
         content: `⭐ **${projectTitle}** was **featured**! ⭐`,
@@ -709,7 +711,7 @@ app.get('/api/projects/feature', async function (req, res) {
             url: String("https://studio.penguinmod.site/#" + String(project.id)),
             author: {
                 name: String(project.owner).substring(0, 50),
-                icon_url: String("https://projects.penguinmod.site/api/pmWrapper/scratchUserImage?username=" + String(project.owner).substring(0, 50)),
+                icon_url: String(`${PROJECT_API_URL}api/pmWrapper/scratchUserImage?username=` + String(project.owner).substring(0, 50)),
                 url: String("https://penguinmod.site/profile?user=" + String(project.owner).substring(0, 50))
             }
         }]
@@ -767,7 +769,7 @@ app.post('/api/projects/toggleProjectVote', async function (req, res) {
         project.featured = true
         if (project.featureWebhookSent !== true) {
             project.featureWebhookSent = true
-            const projectImage = String(`https://projects.penguinmod.site/api/pmWrapper/iconUrl?id=${project.id}&rn=${Math.round(Math.random() * 9999999)}`)
+            const projectImage = String(`${PROJECT_API_URL}api/pmWrapper/iconUrl?id=${project.id}&rn=${Math.round(Math.random() * 9999999)}`)
             const projectTitle = String(project.name).substring(0, 250)
             const body = JSON.stringify({
                 content: `⭐ **${projectTitle}** has been community featured! ⭐`,
@@ -778,7 +780,7 @@ app.post('/api/projects/toggleProjectVote', async function (req, res) {
                     url: String("https://studio.penguinmod.site/#" + String(project.id)),
                     author: {
                         name: String(project.owner).substring(0, 50),
-                        icon_url: String("https://projects.penguinmod.site/api/pmWrapper/scratchUserImage?username=" + String(project.owner).substring(0, 50)),
+                        icon_url: String(`${PROJECT_API_URL}api/pmWrapper/scratchUserImage?username=` + String(project.owner).substring(0, 50)),
                         url: String("https://penguinmod.site/profile?user=" + String(project.owner).substring(0, 50))
                     }
                 }]
